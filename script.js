@@ -8,4 +8,16 @@ const subtract = (firstValue, secondValue) =>  {
     return results;
 }
 
-console.log(subtract(2, 5));
+const multiply = (firstValue, secondValue) => {
+    const results = firstValue * secondValue;
+    return results;
+}
+
+const divide = (firstValue, secondValue) => {
+    const results = firstValue / secondValue;
+    return results;
+}
+
+console.log(multiply(5, 10));
+
+console.log(divide(10, 2));
