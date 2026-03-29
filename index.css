@@ -1,0 +1,12 @@
+#calculatorBody {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    font-size: 40px;
+}
+
+#display {
+    font-size:  60px;
+}
