@@ -1,3 +1,4 @@
+// Functions for basic math
 const add = (firstValue, secondValue) => {
     const results = firstValue + secondValue;
     return results;
@@ -18,6 +19,14 @@ const divide = (firstValue, secondValue) => {
     return results;
 }
 
-console.log(multiply(5, 10));
 
-console.log(divide(10, 2));
+const operate = (num1, num2, inputedOperator) => {
+switch (inputedOperator) {
+    case "+":
+        return add(num1, num2);
+        break;
+    case "-":
+        return subtract(num1, num2);
+        break;
+    }
+}
