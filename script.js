@@ -47,7 +47,13 @@ const btn = document.querySelectorAll(".button");
 
 btn.forEach((button) => {
     button.addEventListener("click", (event) => {
-        if (currentStage === 0) {
+        if (event.target.textContent === "clear"){
+            currentStage = 0;
+            displayNum1 = 0;
+            displayOperator = 0;
+            displayNum2 = 0;
+        }
+        else if (currentStage === 0) {
             displayNum1 = Number(event.target.textContent);
             currentStage += 1;
             console.log(displayNum1);
@@ -67,6 +73,7 @@ btn.forEach((button) => {
             results = operate(displayNum1, displayNum2, displayOperator);
             console.log(results);
             }
+            currentStage === 0;
         }
     })
 })
