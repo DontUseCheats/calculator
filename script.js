@@ -1,21 +1,23 @@
 // Functions for basic math
+let results = 0;
+
 const add = (firstValue, secondValue) => {
-    const results = firstValue + secondValue;
+    results = firstValue + secondValue;
     return results;
 }
 
 const subtract = (firstValue, secondValue) =>  {
-    const results = firstValue - secondValue;
+    results = firstValue - secondValue;
     return results;
 }
 
 const multiply = (firstValue, secondValue) => {
-    const results = firstValue * secondValue;
+    results = firstValue * secondValue;
     return results;
 }
 
 const divide = (firstValue, secondValue) => {
-    const results = firstValue / secondValue;
+    results = firstValue / secondValue;
     return results;
 }
 
@@ -46,16 +48,25 @@ const btn = document.querySelectorAll(".button");
 btn.forEach((button) => {
     button.addEventListener("click", (event) => {
         if (currentStage === 0) {
-            displayNum1 = event.target.textContent;
+            displayNum1 = Number(event.target.textContent);
             currentStage += 1;
+            console.log(displayNum1);
         }
         else if (currentStage === 1) {
             displayOperator = event.target.textContent;
             currentStage += 1;
+            console.log(displayOperator);
         }
-        else {
-            displayNum2 = event.target.textContent;
+        else if (currentStage === 2) {
+            displayNum2 = Number(event.target.textContent);
             currentStage += 1;
+            console.log(displayNum2);
+        }
+        else if (currentStage === 3) {
+            if (event.target.textContent === "=") {
+            results = operate(displayNum1, displayNum2, displayOperator);
+            console.log(results);
+            }
         }
     })
 })
