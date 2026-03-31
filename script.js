@@ -42,7 +42,7 @@ switch (inputedOperator) {
 let currentStage = 0;
 let displayNum1 = "";
 let displayOperator = "";
-let displayNum2 = 0;
+let displayNum2 = "";
 
 // Displays user inputs
 const displayBody = document.querySelector("#display");
@@ -56,7 +56,7 @@ btn.forEach((button) => {
             currentStage = 0;
             displayNum1 = "";
             displayOperator = "";
-            displayNum2 = 0;
+            displayNum2 = "";
             displayBody.textContent = "";
         }
         else if (currentStage === 0) {
@@ -74,13 +74,14 @@ btn.forEach((button) => {
             }
         }
         else if (currentStage === 1) {
-            displayNum2 = Number(event.target.textContent);
-            currentStage += 1;
-            displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2;
-            console.log(displayNum2);
-        }
-        else if (currentStage === 2) {
-            if (event.target.textContent === "=") {
+            if (event.target.textContent !== "=") {
+                displayNum2 += (event.target.textContent);
+                displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2;
+                console.log(displayNum2);
+            }
+            else {
+                displayNum2 = Number(displayNum2);
+                currentStage += 1;
                 results = operate(displayNum1, displayNum2, displayOperator);
                 displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2 + "  = " + results;
                 console.log(results);
