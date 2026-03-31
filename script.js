@@ -21,7 +21,7 @@ const divide = (firstValue, secondValue) => {
     return results;
 }
 
-
+// Switch checks which operator function is called and used
 const operate = (num1, num2, inputedOperator) => {
 switch (inputedOperator) {
     case "+":
@@ -38,11 +38,16 @@ switch (inputedOperator) {
         break;
     }
 }
+// Global variables for btn functionality
 let currentStage = 0;
 let displayNum1 = 0;
 let displayOperator = "";
 let displayNum2 = 0;
 
+// Displays user inputs
+const displayBody = document.querySelector("#display");
+
+// buttons functionality
 const btn = document.querySelectorAll(".button"); 
 
 btn.forEach((button) => {
@@ -52,25 +57,30 @@ btn.forEach((button) => {
             displayNum1 = 0;
             displayOperator = 0;
             displayNum2 = 0;
+            displayBody.textContent = "";
         }
         else if (currentStage === 0) {
             displayNum1 = Number(event.target.textContent);
             currentStage += 1;
+            displayBody.textContent = displayNum1;
             console.log(displayNum1);
         }
         else if (currentStage === 1) {
             displayOperator = event.target.textContent;
             currentStage += 1;
+            displayBody.textContent = displayNum1 + " " + displayOperator;
             console.log(displayOperator);
         }
         else if (currentStage === 2) {
             displayNum2 = Number(event.target.textContent);
             currentStage += 1;
+            displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2;
             console.log(displayNum2);
         }
         else if (currentStage === 3) {
             if (event.target.textContent === "=") {
             results = operate(displayNum1, displayNum2, displayOperator);
+            displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2 + "  = " + results;
             console.log(results);
             }
             currentStage === 0;
