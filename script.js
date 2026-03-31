@@ -60,7 +60,13 @@ btn.forEach((button) => {
             displayBody.textContent = "";
         }
         else if (currentStage === 0) {
-            if (event.target.textContent !== "+" && event.target.textContent !== "-" && event.target.textContent !== "*" && event.target.textContent !== "/") {
+            if (event.target.textContent === ".") {
+                if (!displayNum1.includes(".")) {
+                    displayNum1 += ".";
+                    displayBody.textContent = displayNum1;
+                }
+            }
+            else if (event.target.textContent !== "+" && event.target.textContent !== "-" && event.target.textContent !== "*" && event.target.textContent !== "/") {
                 displayNum1 += (event.target.textContent);
                 displayBody.textContent = displayNum1;
                 console.log(displayNum1);
@@ -83,6 +89,7 @@ btn.forEach((button) => {
                 displayNum2 = Number(displayNum2);
                 currentStage += 1;
                 results = operate(displayNum1, displayNum2, displayOperator);
+                results = parseFloat(results.toFixed(3));
                 displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2 + "  = " + results;
                 console.log(results);
             }
