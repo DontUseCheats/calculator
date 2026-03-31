@@ -59,6 +59,16 @@ btn.forEach((button) => {
             displayNum2 = "";
             displayBody.textContent = "";
         }
+        else if (event.target.textContent === "CE") {
+            if (currentStage === 0) {
+                displayNum1 = displayNum1.slice(0, -1);
+                displayBody.textContent = displayNum1;
+            }
+            else if (currentStage === 1) {
+                displayNum2 = displayNum2.slice(0, -1);
+                displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2;
+            }
+        }
         else if (currentStage === 0) {
             if (event.target.textContent === ".") {
                 if (!displayNum1.includes(".")) {
