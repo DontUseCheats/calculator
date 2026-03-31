@@ -40,7 +40,7 @@ switch (inputedOperator) {
 }
 // Global variables for btn functionality
 let currentStage = 0;
-let displayNum1 = 0;
+let displayNum1 = "";
 let displayOperator = "";
 let displayNum2 = 0;
 
@@ -54,36 +54,37 @@ btn.forEach((button) => {
     button.addEventListener("click", (event) => {
         if (event.target.textContent === "clear"){
             currentStage = 0;
-            displayNum1 = 0;
-            displayOperator = 0;
+            displayNum1 = "";
+            displayOperator = "";
             displayNum2 = 0;
             displayBody.textContent = "";
         }
         else if (currentStage === 0) {
-            displayNum1 = Number(event.target.textContent);
-            currentStage += 1;
-            displayBody.textContent = displayNum1;
-            console.log(displayNum1);
+            if (event.target.textContent !== "+" && event.target.textContent !== "-" && event.target.textContent !== "*" && event.target.textContent !== "/") {
+                displayNum1 += (event.target.textContent);
+                displayBody.textContent = displayNum1;
+                console.log(displayNum1);
+            }
+            else {
+                displayNum1 = Number(displayNum1);
+                displayOperator = event.target.textContent;
+                currentStage += 1;
+                displayBody.textContent = displayNum1 + " " + displayOperator;
+                console.log(displayOperator);
+            }
         }
         else if (currentStage === 1) {
-            displayOperator = event.target.textContent;
-            currentStage += 1;
-            displayBody.textContent = displayNum1 + " " + displayOperator;
-            console.log(displayOperator);
-        }
-        else if (currentStage === 2) {
             displayNum2 = Number(event.target.textContent);
             currentStage += 1;
             displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2;
             console.log(displayNum2);
         }
-        else if (currentStage === 3) {
+        else if (currentStage === 2) {
             if (event.target.textContent === "=") {
-            results = operate(displayNum1, displayNum2, displayOperator);
-            displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2 + "  = " + results;
-            console.log(results);
+                results = operate(displayNum1, displayNum2, displayOperator);
+                displayBody.textContent = displayNum1 + " " + displayOperator + " " + displayNum2 + "  = " + results;
+                console.log(results);
             }
-            currentStage === 0;
         }
     })
 })
