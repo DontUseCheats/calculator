@@ -87,5 +87,12 @@ btn.forEach((button) => {
                 console.log(results);
             }
         }
+        else if (currentStage === 2) {
+            displayNum1 = results;
+            displayNum2 = "";
+            displayOperator = event.target.textContent;
+            displayBody.textContent = displayNum1 + " " + displayOperator;
+            currentStage = 1;
+        }
     })
 })
